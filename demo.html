@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>可乐瓶</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			img{
+				display: block;
+			}
+			.box{
+				margin:100px auto 0;
+				overflow: hidden;
+				position:relative;
+			}
+			.cokeBg,.cokeCan{
+				position:absolute
+			}
+			.cokeBg{
+				top:10px;
+			}
+			.cokeBg img{
+				float:left;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box">
+			<div class="cokeBg" id="cokeBg">
+				<img src="img/coke_bg.jpg" >
+				<img src="img/coke_bg.jpg" >
+			</div>
+			<div class="cokeCan" id="cokeCan">
+				<img src="img/coke_can.png" >
+			</div>
+		</div>
+		<script>
+			window.onload=function(){
+				var box=document.getElementById('box')
+				var cokeBg=document.getElementById('cokeBg');
+				var cokeCan=document.getElementById('cokeCan');
+				var imgs=cokeBg.getElementsByTagName('img');
+				box.style.width=cokeCan.offsetWidth+'px';
+				box.style.height=cokeCan.offsetHeight+'px';
+				cokeBg.style.width=imgs[0].offsetWidth*2+'px';
+				var num=0;
+				setInterval(function(){
+					
+					if(Math.abs(num)>imgs[0].offsetWidth){
+						num=0;
+					}
+					num--;
+					cokeBg.style.transform='translate('+num+'px)'
+				},20);
+			}
+		</script>
+	</body>
+</html>
